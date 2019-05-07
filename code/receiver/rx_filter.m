@@ -1,0 +1,1 @@
+function z_tilde = rx_filter(s_tilde, par_rx_w, switch_graph, switch_off)
