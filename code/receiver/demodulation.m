@@ -20,7 +20,7 @@ function c_hat = demodulation(d_bar, switch_mod, switch_graph)
     end
 
 bits_per_symbol = 2*switch_mod + 2;
-normfactor = 2/3 * (2^(2*switch_mod+2) - 1);
+normfactor = sqrt( 2/3 * (2^(2*switch_mod+2) - 1) );
 starting_position = -(2^(switch_mod+1) - 1); %-1, -3 or -7 for 4QAM, 16QAM, 64QAM
 step = 2;
 boundaries = starting_position+1:step:-starting_position;

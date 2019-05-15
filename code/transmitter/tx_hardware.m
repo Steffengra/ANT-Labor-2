@@ -3,11 +3,11 @@ x = [];
 
 for ii = 1:length(s)
     if abs(s(ii)) > par_txthresh
-        s(ii) = s(ii)/abs(s(ii));
+        x(ii) = s(ii)/abs(s(ii));
+    else
+        x(ii) = s(ii);
     end 
 end
-
-x = s;
 
 if switch_graph == 1
     figure;

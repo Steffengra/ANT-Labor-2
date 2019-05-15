@@ -1,7 +1,8 @@
 function d_bar = equalizer(d_tilde, switch_mod, switch_graph)
-% which equalizer
 
-H = d_tilde(1,:) / (.5 + .5i); %determine channel coefficient H
+pilot = repmat([1/sqrt(2)+1/sqrt(2)*i -1/sqrt(2)-1/sqrt(2)*i], 1, length(d_tilde)/2);
+H = pilot ./ d_tilde(1, :);
+
 d_bar = d_tilde(2:end, :); %remove pilot
 d_bar = d_bar .* H; %equalizing
 

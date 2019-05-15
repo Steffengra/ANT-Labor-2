@@ -4,7 +4,7 @@ bits_per_symbol = 2*switch_mod + 2;
 starting_position = -(2^(switch_mod+1) - 1);
 step = 2;
 iterations = floor( length(c) / bits_per_symbol );
-normfactor = 2/3 * (2^(2*switch_mod+2) - 1);
+normfactor = sqrt( 2/3 * (2^(2*switch_mod+2) - 1) );
 
 d = [];
 

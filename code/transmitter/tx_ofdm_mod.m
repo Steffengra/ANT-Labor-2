@@ -1,5 +1,4 @@
 function z = tx_ofdm_mod(D, par_N_FFT, par_N_CP, switch_graph)
-%allowed to use ifft?
 %ofdm------------------------------------------
 z = ifft(D, par_N_FFT, 2); %2 = each row
 %----------------------------------------------
