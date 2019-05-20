@@ -1,5 +1,5 @@
 function b = digital_source(par_no, switch_graph)
-%print number of ones, zeros
+%Generate (almost) equal amounts of zeroes, ones
 b = rand(1, par_no)>0.5;
 
 if switch_graph == 1
@@ -14,5 +14,6 @@ if switch_graph == 1
     ylim([-.2 1.2]);
     xlabel('Frame');
     ylabel('Binary Value');
-    title('Binary Pattern of Digital Source - Tx');
+    title('tx: Binary Pattern of Digital Source');
+    legend('Binary Pattern', 'Mean');
 end

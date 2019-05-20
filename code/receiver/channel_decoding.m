@@ -1,5 +1,4 @@
 function b_hat = channel_decoding(c_hat, par_H, par_N_zeros, switch_off)
-%add par_N_zeros
 
 b_hat = [];
 if switch_off == 0

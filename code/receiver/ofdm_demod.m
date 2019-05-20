@@ -9,3 +9,10 @@ z_tilde = z_tilde(:, par_N_CP+1:end);
 %demodulate ofdm symbols---------------------------------------------
 d_tilde = fft( z_tilde, par_N_FFT, 2);
 %--------------------------------------------------------------------
+if switch_graph == 1
+    figure; 
+    scatter(real(d_tilde(2,:)), imag(d_tilde(2,:)), 36, 1/255 * [33 70 122]);
+    title('rx: OFDM Symbolspace');
+    ylabel('Magnitude');
+    grid;
+end

@@ -1,8 +1,13 @@
 function D = pilot_insertion(d, par_N_FFT, par_N_block, switch_graph)
-% implement zero mean pilot
 
+%reshape datastream into a matrix of fft blocks-------
 D = reshape(d, par_N_FFT, par_N_block).';
-%prepend known pilot
-pilot = [];
-pilot = repmat([1/sqrt(2)+1/sqrt(2)*i -1/sqrt(2)-1/sqrt(2)*i], 1, par_N_FFT/2);
+%-----------------------------------------------------
+
+%pilot: zero mean in time domain, mean power of 1 in time domain--
+pilot = repmat([1/sqrt(2)+1/sqrt(2)*1i -1/sqrt(2)-1/sqrt(2)*1i], 1, par_N_FFT/2);
+%-----------------------------------------------------------------
+
+%prepend pilot----------------------------------------
 D = [pilot; D];
+%-----------------------------------------------------

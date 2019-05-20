@@ -3,7 +3,8 @@ function c_hat = demodulation(d_bar, switch_mod, switch_graph)
         det_bits = [];
         num_steps = [];
         boundaries_flip = flip(boundaries);
-        for jj = 1:length(boundaries) %iterate through decision boundaries
+        %iterate through decision boundaries----------------------
+        for jj = 1:length(boundaries) 
             if symbol > boundaries_flip(jj)
                 num_steps = flip( de2bi( find(boundaries==boundaries_flip(jj)), bits_per_symbol/2 ));
                 break;
@@ -12,11 +13,13 @@ function c_hat = demodulation(d_bar, switch_mod, switch_graph)
         if isempty(num_steps)
             num_steps = flip( de2bi( 0, bits_per_symbol/2 ));
         end
-        %convert bin to gray
+        %---------------------------------------------------------
+        %convert bin to gray--------------------------------------
         det_bits = [det_bits num_steps(1)];
         for jj = 2:bits_per_symbol/2
             det_bits = [det_bits xor(num_steps(jj), num_steps(jj-1))];
         end
+        %---------------------------------------------------------
     end
 
 bits_per_symbol = 2*switch_mod + 2;
@@ -30,10 +33,10 @@ iterations = length(d_bar);
 c_hat = [];
 for ii = 1:iterations
     cur = d_bar(ii);
-    %find first bits_per_symbol/2 bits from real part
+    %find first (bits_per_symbol/2) bits from real part
     bits = determine_bits(real(cur), boundaries, bits_per_symbol);
     c_hat = [c_hat bits];
-    %find last bits_per_symbol/2 bits from imag part
+    %find last (bits_per_symbol/2) bits from imag part
     bits = determine_bits(imag(cur), boundaries, bits_per_symbol);
     c_hat = [c_hat bits];
 end
@@ -52,6 +55,6 @@ if switch_graph == 1
     end
     ylabel('Im');
     xlabel('Re');
-    title('Modulated Symbols - Rx');
+    title('rx: Modulated Symbols');
 end
 end
