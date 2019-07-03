@@ -4,7 +4,7 @@ buffer = D(par_N_FFT+1:end);
 if switch_scfdma == 1
     buffer2 = [];
     for ii = 1:length(buffer)/(par_N_FFT/2)
-        buffer2 = [buffer2 fft(buffer(1+(ii-1)*par_N_FFT/2:par_N_FFT/2+(ii-1)*par_N_FFT/2), par_N_FFT/2)];
+        buffer2 = [buffer2 1/sqrt(par_N_FFT/2)*fft(buffer(1+(ii-1)*par_N_FFT/2:par_N_FFT/2+(ii-1)*par_N_FFT/2), par_N_FFT/2)];
     end
     buffer = buffer2;
 end

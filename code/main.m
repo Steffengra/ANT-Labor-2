@@ -1,3 +1,4 @@
+%Draw multiple curves in graph
 %Global Parameters-------------------------------
 switch_mod = 2;         %QAM: 0==4QAM, 1==16QAM, 2==64QAM
 switch_graph = 1;       %0==off, 1==on, 2==BER only

@@ -1,13 +1,13 @@
 %Draw multiple curves in graph
 %Global Parameters-------------------------------
 switch_mod = 2;         %QAM: 0==4QAM, 1==16QAM, 2==64QAM
-switch_graph = 1;       %0==off, 1==on, 2==BER only
+switch_graph = 2;       %0==off, 1==on, 2==BER only
 switch_off_cc = 0;      %Channel Coding 0==on, 1==off
 switch_off_filt = 1;    %Filter 0==on, 1==off
 switch_map = 0;         %0==block mapping, 1==alternating
 switch_scfdma1 = 0;
 switch_scfdma2 = 1;
-switch_offset = 1;
+switch_offset = 0;
 par_N_FFT = 1024;
 par_txthresh = 100;
 par_rxthresh = 1;
@@ -25,7 +25,7 @@ par_N_block = par_N_block * ( 1 + 6 * not(switch_off_cc) );
 %------------------------------------------------------------------------
 
 %Transmission Simulation-------------------------
-dB_range = 40:5:40;
+dB_range = -10:5:30;
 for ii = 1:length(dB_range)
     par_SNRdB = dB_range(ii);
     run a_transmitter1.m
@@ -51,6 +51,8 @@ for ii = 1:length(dB_range)
     PAPR_tot_1 = PAPR_1;
     PAPR_tot_2 = PAPR_2;
 end
+
+save('papr.txt', 'PAPR_tot_1', 'PAPR_tot_2','-ascii');
 
 if or(switch_graph == 1, switch_graph==2)
     figure;

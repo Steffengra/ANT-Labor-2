@@ -20,7 +20,7 @@ par_N_FFT = 1024;
 buffer = d_bar;
 buffer2 = [];
 for ii = 1:length(buffer)/(par_N_FFT/2)
-    buffer2 = [buffer2 ifft(buffer(1+(ii-1)*par_N_FFT/2:par_N_FFT/2+(ii-1)*par_N_FFT/2), par_N_FFT/2)];
+    buffer2 = [buffer2 sqrt(par_N_FFT/2)*ifft(buffer(1+(ii-1)*par_N_FFT/2:par_N_FFT/2+(ii-1)*par_N_FFT/2), par_N_FFT/2)];
 end
 d_bar = buffer2;
 
